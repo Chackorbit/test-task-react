@@ -1,0 +1,46 @@
+.section {
+  display: flex;
+
+  width: 1024px;
+  height: 650px;
+  margin-right: auto;
+  margin-left: auto;
+
+  background: url('../../img/backgrond@1x-min.png'),
+    linear-gradient(0deg, #e0e0e0, #e0e0e0),
+    url('../../img/backgrond@1x-min.png');
+}
+.container {
+  width: 670px;
+  height: 280px;
+
+  margin-left: 60px;
+  margin-top: 185px;
+  margin-bottom: 185px;
+}
+.title {
+  margin-bottom: 21px;
+
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+
+  color: rgba(0, 0, 0, 0.87);
+}
+.text {
+  display: block;
+  width: 527px;
+  height: 97px;
+
+  margin-bottom: 32px;
+
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+
+  color: rgba(0, 0, 0, 0.87);
+}
