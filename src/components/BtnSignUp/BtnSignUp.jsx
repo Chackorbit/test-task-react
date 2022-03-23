@@ -1,4 +1,3 @@
-import react from 'react';
 import s from './BtnSignUp.module.css';
 
 export default function BtnSignUp() {
