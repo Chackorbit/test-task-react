@@ -18,7 +18,7 @@ export default function SecondBlock() {
           Development keeps evolving.
         </p>
         <div className={s.btn}>
-          <BtnSignUp />
+          <BtnSignUp>Sign up</BtnSignUp>
         </div>
       </div>
     </section>

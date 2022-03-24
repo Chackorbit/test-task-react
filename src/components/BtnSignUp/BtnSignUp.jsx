@@ -1,5 +1,14 @@
 import s from './BtnSignUp.module.css';
 
-export default function BtnSignUp() {
-  return <button className={s.button}>Sign up</button>;
+export default function BtnSignUp({
+  type = 'button',
+  children,
+  showMore,
+  positionBtn,
+}) {
+  return (
+    <button className={s.button} onClick={showMore} type={type}>
+      {children}
+    </button>
+  );
 }

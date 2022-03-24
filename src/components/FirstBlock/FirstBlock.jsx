@@ -13,7 +13,7 @@ export default function FirstBlock() {
           must-have skillsets to look for when assessing your front-end
           developers.
         </p>
-        <BtnSignUp />
+        <BtnSignUp>Sign up</BtnSignUp>
         {/* <button className={s.button}>Sign up</button> */}
       </div>
     </section>

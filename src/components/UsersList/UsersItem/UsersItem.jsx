@@ -6,7 +6,7 @@ export default function UsersItem({ allUsers }) {
 
     return (
       <li key={id} className={s.user_item}>
-        <img className={s.img} src={photo} alt="" />
+        <img className={s.img} src={photo} alt="photo" width={70} height={70} />
         <p className={s.name}>{name}</p>
         <p className={s.about}>{position} </p>
         <p className={s.email}>
