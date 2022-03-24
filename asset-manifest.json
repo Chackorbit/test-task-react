@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/test-task-react/static/css/main.da667e02.css",
-    "main.js": "/test-task-react/static/js/main.a9ed78d3.js",
+    "main.css": "/test-task-react/static/css/main.13887391.css",
+    "main.js": "/test-task-react/static/js/main.af9607ab.js",
     "static/media/backgrond@1x-min.png": "/test-task-react/static/media/backgrond@1x-min.8c47a4b742df668da89b.png",
     "static/media/Group.svg": "/test-task-react/static/media/Group.c1eb2aee8669d45290b449dad3c18d82.svg",
     "static/media/Image-387x340@1x-min.png": "/test-task-react/static/media/Image-387x340@1x-min.9319859539fd00de0ec7.png",
     "index.html": "/test-task-react/index.html",
-    "main.da667e02.css.map": "/test-task-react/static/css/main.da667e02.css.map",
-    "main.a9ed78d3.js.map": "/test-task-react/static/js/main.a9ed78d3.js.map"
+    "main.13887391.css.map": "/test-task-react/static/css/main.13887391.css.map",
+    "main.af9607ab.js.map": "/test-task-react/static/js/main.af9607ab.js.map"
   },
   "entrypoints": [
-    "static/css/main.da667e02.css",
-    "static/js/main.a9ed78d3.js"
+    "static/css/main.13887391.css",
+    "static/js/main.af9607ab.js"
   ]
 }
