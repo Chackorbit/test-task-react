@@ -3,7 +3,9 @@
 
   width: 904px;
   height: 340px;
-  margin: 175px auto;
+  margin: 0 auto;
+  padding: 175px 60px;
+  background-color: #f8f8f8;
 }
 
 .container {
