@@ -18,7 +18,9 @@ export default function SecondBlock() {
           Development keeps evolving.
         </p>
         <div className={s.btn}>
-          <BtnSignUp>Sign up</BtnSignUp>
+          <a href="#register">
+            <BtnSignUp>Sign up</BtnSignUp>
+          </a>
         </div>
       </div>
     </section>

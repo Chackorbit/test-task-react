@@ -1,0 +1,41 @@
+.footer {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  width: 1024px;
+  margin: 0 auto;
+
+  text-align: center;
+  background: #ffffff;
+}
+
+.first_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 57px;
+}
+
+.second_block {
+  height: 40px;
+  background-color: #000000;
+}
+
+.third_block {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  height: 50px;
+}
+
+.logoFooter {
+  margin-left: 60px;
+  margin-right: 26px;
+  /* margin-right: auto; */
+}
+
+.homepage_footer {
+  width: 582px;
+  /* margin: 0 auto; */
+}

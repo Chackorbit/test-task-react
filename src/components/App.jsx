@@ -3,24 +3,15 @@ import Header from './Header/Header';
 import FirstBlock from './FirstBlock/FirstBlock';
 import SecondBlock from './SecondBlock/SecondBlock';
 import UsersList from './UsersList/UsersList';
+import Form from './Form/Form';
+import Footer from './Footer/Footer';
 
 export const App = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [page, setPage] = useState(1);
+  const [positions, setPositions] = useState([]);
 
-  const fetchToken = () => {
-    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token')
-      .then(function (response) {
-        // console.log(response);
-        return response.json();
-      })
-      .then(function (data) {
-        console.log('data: ', data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+  // eslint-disable-next-line no-unused-vars
 
   const fetchUsers = () => {
     const BASE_URL =
@@ -54,25 +45,64 @@ export const App = () => {
       });
   };
 
-  const showMore = dataUsers => {
+  const fetchPosition = () => {
+    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/positions')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        setPositions(data.positions); // ответ об успешном завершении процесса }) ```
+      });
+  };
+
+  const showMore = () => {
     // setAllUsers(state => [...state, ...dataUsers]);
     setPage(state => state + 1);
   };
+  document.querySelectorAll('a[href^="#"').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      let href = this.getAttribute('href').substring(1);
+
+      const scrollTarget = document.getElementById(href);
+
+      // const topOffset = document.querySelector('.scrollto').offsetHeight;
+      const topOffset = 0; // если не нужен отступ сверху
+      const elementPosition = scrollTarget.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - topOffset;
+
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    });
+  });
+
+  useEffect(() => {
+    fetchPosition();
+  }, []);
 
   useEffect(() => {
     fetchUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  console.log(allUsers);
+  // console.log(allUsers);
+  // console.log(positions);
   return (
     <div>
       <Header />
 
-      <FirstBlock />
+      {/* <FirstBlock /> */}
 
-      <SecondBlock />
+      {/* <SecondBlock /> */}
 
-      <UsersList showMore={showMore} allUsers={allUsers} />
+      {/* <UsersList showMore={showMore} allUsers={allUsers} /> */}
+
+      {/* <Form positions={positions} /> */}
+
+      {/* <Footer /> */}
     </div>
   );
 };

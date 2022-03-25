@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 904px;
+
+  padding: 175px 60px 180px;
+
+  background-color: #f8f8f8;
+  background-image: url('../../svg/Footprint-467x177.svg');
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-position-x: right;
+}
+
+.title {
+  margin-bottom: 10px;
+
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.text {
+  margin-bottom: 32px;
+
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.27;
+
+  text-align: center;
+
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+}
+
+.inputName {
+  height: 54px;
+  margin-bottom: 50px;
+  padding-left: 16px;
+
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+
+  border: 1px solid #d0cfcf;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.container_radio {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 11px;
+  margin-bottom: 50px;
+
+  /* text-align: center; */
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.radio {
+  margin-bottom: 8px;
+  margin-right: 12px;
+}

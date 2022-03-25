@@ -3,7 +3,7 @@ import BtnSignUp from '../BtnSignUp/BtnSignUp';
 
 export default function FirstBlock() {
   return (
-    <section className={s.section}>
+    <section className={s.section} id="first_block">
       <div className={s.container}>
         <h1 className={s.title}>Test assignment for front-end developers</h1>
         <p className={s.text}>
@@ -13,7 +13,10 @@ export default function FirstBlock() {
           must-have skillsets to look for when assessing your front-end
           developers.
         </p>
-        <BtnSignUp>Sign up</BtnSignUp>
+
+        <a href="#register">
+          <BtnSignUp>Sign up</BtnSignUp>
+        </a>
         {/* <button className={s.button}>Sign up</button> */}
       </div>
     </section>
