@@ -1,7 +1,8 @@
 import s from './Header.module.css';
 import { ReactComponent as Logo } from '../../svg/Group.svg';
+import { ReactComponent as MobMenu } from '../../svg/Menu.svg';
 
-const Header = () => {
+const Header = ({ openMenu }) => {
   return (
     <header className={s.header} id="header">
       <div className={s.header_logo}>
@@ -28,6 +29,12 @@ const Header = () => {
             <a href="#register">Sign Up</a>
           </li>
         </ul>
+
+        <div className={s.mob_nav}>
+          <button type="button" onClick={openMenu}>
+            <MobMenu />
+          </button>
+        </div>
       </nav>
     </header>
   );

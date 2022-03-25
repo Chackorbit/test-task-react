@@ -5,10 +5,13 @@
   height: 650px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 60px;
 
-  background: url('../../img/backgrond@1x-min.png'),
-    linear-gradient(0deg, #e0e0e0, #e0e0e0),
-    url('../../img/backgrond@1x-min.png');
+  background: url('img/backgrond@1x-min.png'),
+    linear-gradient(0deg, #e0e0e0, #e0e0e0), url('img/backgrond@1x-min.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 .container {
   width: 670px;
@@ -43,4 +46,58 @@
   line-height: 1.62;
 
   color: rgba(0, 0, 0, 0.87);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .section {
+    width: 768px;
+    height: 500px;
+    background: url('img/background-tab-min.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .container {
+    width: 424px;
+    height: 339px;
+
+    margin-left: 32px;
+    margin-top: 81px;
+    margin-bottom: 80px;
+  }
+  .text {
+    width: 424px;
+    height: 156px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    width: 360px;
+    height: 469px;
+
+    background: url('img/backgraund-tel-min.png'),
+      linear-gradient(0deg, #edecea, #edecea);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+  }
+  .container {
+    width: 240;
+    height: 367;
+
+    margin-left: 16px;
+    margin-top: 51px;
+    margin-bottom: 51px;
+  }
+
+  .title {
+    width: 240px;
+  }
+
+  .text {
+    width: 240px;
+    height: 104px;
+    overflow: hidden;
+  }
 }

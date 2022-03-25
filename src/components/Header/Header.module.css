@@ -33,7 +33,44 @@
 .nav_item {
   margin-right: 30px;
 }
+.nav_item a {
+  color: rgba(0, 0, 0, 0.87);
+}
 
 .nav_item:last-child {
   margin-right: 60px;
+}
+
+.mob_nav {
+  display: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .header {
+    width: 768px;
+  }
+
+  .ul_nav {
+    display: none;
+  }
+
+  .mob_nav {
+    display: block;
+    margin: 18px 32px 18px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    width: 360px;
+  }
+
+  .ul_nav {
+    display: none;
+  }
+
+  .mob_nav {
+    display: block;
+    margin: 18px 32px 18px 0;
+  }
 }

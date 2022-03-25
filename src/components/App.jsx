@@ -1,3 +1,4 @@
+import s from './App.module.css';
 import { useState, useEffect } from 'react';
 import Header from './Header/Header';
 import FirstBlock from './FirstBlock/FirstBlock';
@@ -5,11 +6,13 @@ import SecondBlock from './SecondBlock/SecondBlock';
 import UsersList from './UsersList/UsersList';
 import Form from './Form/Form';
 import Footer from './Footer/Footer';
+import MobileMenu from './Header/MobileMenu/MobileMenu';
 
 export const App = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [positions, setPositions] = useState([]);
+  const [openMenu, setOpenMenu] = useState(false);
 
   // eslint-disable-next-line no-unused-vars
 
@@ -59,6 +62,7 @@ export const App = () => {
     // setAllUsers(state => [...state, ...dataUsers]);
     setPage(state => state + 1);
   };
+
   document.querySelectorAll('a[href^="#"').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -79,6 +83,17 @@ export const App = () => {
     });
   });
 
+  const onOpenMenu = e => {
+    setOpenMenu(state => {
+      if (state === true) {
+        return false;
+      } else if (state === false) {
+        return true;
+      }
+    });
+    console.log('click');
+  };
+
   useEffect(() => {
     fetchPosition();
   }, []);
@@ -88,21 +103,20 @@ export const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  // console.log(allUsers);
-  // console.log(positions);
   return (
-    <div>
-      <Header />
+    <div className={s.body}>
+      <Header openMenu={onOpenMenu} />
+      {openMenu && <MobileMenu onOpenMenu={onOpenMenu} />}
 
-      {/* <FirstBlock /> */}
+      <FirstBlock />
 
-      {/* <SecondBlock /> */}
+      <SecondBlock />
 
-      {/* <UsersList showMore={showMore} allUsers={allUsers} /> */}
+      <UsersList showMore={showMore} allUsers={allUsers} />
 
-      {/* <Form positions={positions} /> */}
+      <Form positions={positions} />
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

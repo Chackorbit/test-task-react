@@ -126,7 +126,9 @@ export default class Form extends react.Component {
               );
             })}
           </div>
-          <BtnSignUp type="submit">Sign Up</BtnSignUp>\
+          <div className={s.btn}>
+            <BtnSignUp type="submit">Sign Up</BtnSignUp>\
+          </div>
         </form>
       </div>
     );

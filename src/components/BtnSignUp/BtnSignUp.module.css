@@ -17,3 +17,8 @@
 
   color: rgba(0, 0, 0, 0.87);
 }
+
+.button:hover {
+  background: #ffe302;
+  cursor: pointer;
+}

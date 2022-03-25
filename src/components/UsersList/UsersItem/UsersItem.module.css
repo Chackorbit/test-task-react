@@ -1,19 +1,19 @@
 .user_item {
-  width: 222px;
+  width: 282px;
   height: 313px;
   margin-right: 29px;
   margin-bottom: 29px;
-  padding: 36px 30px 0;
+
+  padding-top: 36px;
+  padding-left: 30px;
+  padding-right: 30px;
 
   text-align: center;
 
   border-radius: 10px;
   background: #ffffff;
   overflow: hidden;
-}
-
-.user_item:nth-child(3n) {
-  margin-right: 0;
+  box-sizing: border-box;
 }
 
 .img {
@@ -30,6 +30,7 @@
   line-height: 1.27;
 
   text-align: center;
+  overflow: hidden;
 
   color: rgba(0, 0, 0, 0.87);
 }
@@ -48,4 +49,38 @@
 
 .email {
   overflow: hidden;
+}
+
+@media screen and (min-width: 1024px) {
+  .user_item:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .user_item {
+    margin-right: 16px;
+    margin-bottom: 16px;
+    width: 344px;
+
+    padding: 36px 30px 0 30px;
+  }
+
+  .user_item:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .user_item {
+    margin-right: 0;
+    margin-bottom: 16px;
+    width: 344px;
+
+    padding: 36px 30px 0 30px;
+    box-sizing: border-box;
+  }
+  .user_item:last-child {
+    margin-bottom: 0;
+  }
 }
