@@ -24,22 +24,6 @@ export default function MobileMenu({ onOpenMenu }) {
           <li className={s.menu_item}>Sign up</li>
           <li className={s.menu_item}>Terms and Conditions</li>
         </ul>
-
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
       </div>
     </div>
   );
