@@ -1,6 +1,6 @@
 .section {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 
   width: 904px;
   height: 340px;
@@ -109,7 +109,7 @@
     width: 328px;
     /* height: 729px; */
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: flex-start;
     flex-direction: column;
 
