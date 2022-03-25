@@ -9,6 +9,7 @@ export default class Form extends react.Component {
     email: '',
     phone: '',
     position_id: 0,
+    photo: '',
   };
   fetchToken = async () => {
     const tok = await fetch(
@@ -84,6 +85,8 @@ export default class Form extends react.Component {
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            minLength={2}
+            maxLength="60"
             required
           />
           <input
@@ -94,6 +97,9 @@ export default class Form extends react.Component {
             onChange={this.onChangeState}
             value={this.state.email}
             name="email"
+            // pattern=""
+            minLength={2}
+            maxLength="100"
             required
           />
           <input
@@ -103,10 +109,22 @@ export default class Form extends react.Component {
             value={this.state.phone}
             type="tel"
             name="phone"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            pattern="^[\+]{0,1}380([0-9]{9})$"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
+          <label htmlFor="upload-photo" className={s.input__file_button}>
+            <span class={s.input__file_icon_wrapper}>Upload</span>
+            <span class="input__file-button-text">Upload your photo</span>
+          </label>
+          <input
+            className={s.visually_hidden}
+            id="upload-photo"
+            name="photo"
+            type="file"
+            accept=".jpg, .jpeg"
+          />
+
           <p>Select your position</p>
           <div className={s.container_radio}>
             {positions.map(position => {
