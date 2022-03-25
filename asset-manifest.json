@@ -1,16 +1,21 @@
 {
   "files": {
-    "main.css": "/test-task-react/static/css/main.13887391.css",
-    "main.js": "/test-task-react/static/js/main.af9607ab.js",
+    "main.css": "/test-task-react/static/css/main.33de303a.css",
+    "main.js": "/test-task-react/static/js/main.11f9f46a.js",
     "static/media/backgrond@1x-min.png": "/test-task-react/static/media/backgrond@1x-min.8c47a4b742df668da89b.png",
+    "static/media/background-tab-min.png": "/test-task-react/static/media/background-tab-min.7381e78c8a28e0a933ed.png",
+    "static/media/backgraund-tel-min.png": "/test-task-react/static/media/backgraund-tel-min.9993d7fe453fb5580acf.png",
+    "static/media/Footprint-467x177.svg": "/test-task-react/static/media/Footprint-467x177.abed71111f279e13a840.svg",
+    "static/media/LOGO-abz.agecy.svg": "/test-task-react/static/media/LOGO-abz.agecy.73daa67bda17185a2b2ddd0a343a7ee7.svg",
     "static/media/Group.svg": "/test-task-react/static/media/Group.c1eb2aee8669d45290b449dad3c18d82.svg",
     "static/media/Image-387x340@1x-min.png": "/test-task-react/static/media/Image-387x340@1x-min.9319859539fd00de0ec7.png",
     "index.html": "/test-task-react/index.html",
-    "main.13887391.css.map": "/test-task-react/static/css/main.13887391.css.map",
-    "main.af9607ab.js.map": "/test-task-react/static/js/main.af9607ab.js.map"
+    "static/media/Menu.svg": "/test-task-react/static/media/Menu.209b202f1807f0e7ee3060d92bb0b28e.svg",
+    "main.33de303a.css.map": "/test-task-react/static/css/main.33de303a.css.map",
+    "main.11f9f46a.js.map": "/test-task-react/static/js/main.11f9f46a.js.map"
   },
   "entrypoints": [
-    "static/css/main.13887391.css",
-    "static/js/main.af9607ab.js"
+    "static/css/main.33de303a.css",
+    "static/js/main.11f9f46a.js"
   ]
 }
