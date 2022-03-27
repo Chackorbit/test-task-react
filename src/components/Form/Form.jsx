@@ -9,8 +9,24 @@ export default class Form extends react.Component {
     email: '',
     phone: '',
     position_id: 0,
-    photo: '',
   };
+
+  appendFormData = () => {
+    const { name, email, phone, position_id } = this.state;
+
+    var formData = new FormData();
+
+    var fileField = document.querySelector('input[type="file"]');
+
+    formData.append('name', name);
+    formData.set('email', email);
+    formData.set('phone', phone);
+    formData.set('position_id', position_id);
+
+    formData.append('photo', fileField.files[0]);
+    return formData;
+  };
+
   fetchToken = async () => {
     const tok = await fetch(
       'https://frontend-test-assignment-api.abz.agency/api/v1/token'
@@ -25,7 +41,7 @@ export default class Form extends react.Component {
   registerUser = token => {
     fetch(' https://frontend-test-assignment-api.abz.agency/api/v1/users', {
       method: 'POST',
-      body: this.state,
+      body: this.appendFormData(),
       headers: { Token: token },
     })
       .then(function (response) {
@@ -34,7 +50,7 @@ export default class Form extends react.Component {
       .then(function (data) {
         console.log(data);
         if (data.success) {
-          // обработка успешного ответа
+          return this.resetForm();
         } else {
           // обработка ошибок сервера
         }
@@ -61,9 +77,102 @@ export default class Form extends react.Component {
 
   onSubmit = e => {
     e.preventDefault();
+
     this.fetchToken();
-    // console.log(this.state);
   };
+
+  validFileType = file => {
+    var fileTypes = ['image/jpeg', 'image/pjpeg', 'image/png'];
+
+    for (var i = 0; i < fileTypes.length; i++) {
+      if (file.type === fileTypes[i]) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  updateImageDisplay = () => {
+    var input = document.querySelector('#upload-photo');
+    var preview = document.querySelector('.preview');
+
+    while (preview.firstChild) {
+      preview.removeChild(preview.firstChild);
+    }
+
+    var curFiles = input.files;
+
+    if (curFiles.length === 0) {
+      // var para = document.createElement('p');
+      // para.textContent = 'No files currently selected for upload';
+      // preview.appendChild(para);
+    } else {
+      var list = document.createElement('ul');
+      list.classList.add('chose_img');
+
+      preview.appendChild(list);
+      for (var i = 0; i < curFiles.length; i++) {
+        var listItem = document.createElement('li');
+        // eslint-disable-next-line no-redeclare
+        var para = document.createElement('p');
+        if (this.validFileType(curFiles[i])) {
+          para.textContent =
+            curFiles[i].name +
+            ' ' +
+            this.returnFileSize(curFiles[i].size) +
+            '.';
+          var image = document.createElement('img');
+          image.src = window.URL.createObjectURL(curFiles[i]);
+
+          listItem.appendChild(image);
+          listItem.appendChild(para);
+        } else {
+          para.textContent =
+            'File name ' +
+            curFiles[i].name +
+            ': Not a valid file type. Update your selection.';
+          listItem.appendChild(para);
+        }
+
+        list.appendChild(listItem);
+      }
+    }
+  };
+
+  returnFileSize = number => {
+    if (number < 1024) {
+      return number + 'bytes';
+    } else if (number > 1024 && number < 1048576) {
+      return (number / 1024).toFixed(1) + 'KB';
+    } else if (number > 1048576) {
+      return (number / 1048576).toFixed(1) + 'MB';
+    }
+  };
+
+  componentDidMount() {
+    // console.log('componentDidMount');
+    window.addEventListener('change', this.updateImageDisplay);
+  }
+
+  componentWillUnmount() {
+    // console.log('componentWillUnmount');
+    window.removeEventListener('change', this.updateImageDisplay);
+  }
+
+  resetForm = () => {
+    const form = document.getElementById('form');
+
+    this.setState({
+      name: '',
+      email: '',
+      phone: '',
+      position_id: 0,
+    });
+
+    form.reset();
+  };
+
   render() {
     const { positions } = this.props;
 
@@ -75,8 +184,9 @@ export default class Form extends react.Component {
         </p>
 
         {/* onSubmit={this.onSubmit} */}
-        <form className={s.form} onSubmit={this.onSubmit}>
+        <form className={s.form} onSubmit={this.onSubmit} id="form">
           <input
+            id="name"
             placeholder="Your name"
             className={s.inputName}
             onChange={this.onChangeState}
@@ -87,7 +197,7 @@ export default class Form extends react.Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             minLength={2}
             maxLength="60"
-            required
+            // required
           />
           <input
             placeholder="Email"
@@ -100,7 +210,7 @@ export default class Form extends react.Component {
             // pattern=""
             minLength={2}
             maxLength="100"
-            required
+            // required
           />
           <input
             placeholder="Phone"
@@ -109,13 +219,14 @@ export default class Form extends react.Component {
             value={this.state.phone}
             type="tel"
             name="phone"
+            id="phone"
             pattern="^[\+]{0,1}380([0-9]{9})$"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
+            // required
           />
           <label htmlFor="upload-photo" className={s.input__file_button}>
-            <span class={s.input__file_icon_wrapper}>Upload</span>
-            <span class="input__file-button-text">Upload your photo</span>
+            <span className={s.input__file_icon_wrapper}>Upload</span>
+            <span className="input__file-button-text">Upload your photo</span>
           </label>
           <input
             className={s.visually_hidden}
@@ -123,7 +234,11 @@ export default class Form extends react.Component {
             name="photo"
             type="file"
             accept=".jpg, .jpeg"
+            // required
           />
+          <div className="preview">
+            {/* <p>No files currently selected for upload</p> */}
+          </div>
 
           <p>Select your position</p>
           <div className={s.container_radio}>
@@ -134,7 +249,6 @@ export default class Form extends react.Component {
                     className={s.radio}
                     id={position.id}
                     type="radio"
-                    //   checked={gender === Gender.MALE}
                     name="position"
                     value={position.name}
                     onChange={this.handleChange}
@@ -145,92 +259,14 @@ export default class Form extends react.Component {
             })}
           </div>
           <div className={s.btn}>
-            <BtnSignUp type="submit">Sign Up</BtnSignUp>\
+            <BtnSignUp type="submit">
+              {/* <input type="reset"></input> */}
+              Sign Up
+            </BtnSignUp>
+            \
           </div>
         </form>
       </div>
     );
   }
 }
-// export default function Form({ positions }) {
-//   const [name, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [phone, setPhone] = useState('');
-//   const [position, setPosition] = useState('');
-
-//   const handleChange = e => {
-//     const { value } = e.target;
-//     setPosition(value);
-//     console.log(value);
-//   };
-
-//   const onSubmit = e => {
-//     e.preventDefault();
-
-//     // console.log(e.target);
-//     console.log(e.currentTargeti8);
-//   };
-
-//   return (
-//     <div className={s.container}>
-//       <h2 className={s.title}>Register to get a work</h2>
-//       <p className={s.text}>
-//         Your personal data is stored according to the Privacy Policys
-//       </p>
-
-//       {/* onSubmit={this.onSubmit} */}
-//       <form className={s.form} onSubmit={onSubmit}>
-//         <input
-//           placeholder="Your name"
-//           className={s.inputName}
-//           onChange={setName}
-//           value={name}
-//           type="text"
-//           name="name"
-//           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-//           required
-//         />
-//         <input
-//           placeholder="Email"
-//           className={s.inputName}
-//           type="email"
-//           id="email"
-//           //   pattern=""
-//           required
-//         />
-//         <input
-//           placeholder="Phone"
-//           className={s.inputName}
-//           //   onChange={this.addName}
-//           //   value={this.state.number}
-//           type="tel"
-//           name="number"
-//           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-//           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-//           required
-//         />
-
-//         <p>Select your position</p>
-//         {positions.map(position => {
-//           return (
-//             <label key={position.id}>
-//               <input
-//                 type="radio"
-//                 //   checked={gender === Gender.MALE}
-//                 name="position"
-//                 value={position.name}
-//                 onChange={handleChange}
-//               />
-//               {position.name}
-//             </label>
-//           );
-//         })}
-
-//         <button className={s.formBtn} type="submit">
-//           Add name
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }

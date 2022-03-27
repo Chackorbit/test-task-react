@@ -24,7 +24,6 @@ export const App = () => {
       count: 6,
     });
     const url = `${BASE_URL}?${meta}`;
-    console.log(page);
 
     fetch(url)
       .then(function (response) {
@@ -91,7 +90,6 @@ export const App = () => {
         return true;
       }
     });
-    console.log('click');
   };
 
   useEffect(() => {

@@ -175,3 +175,11 @@
   clip-path: inset(50%);
   margin: -1px;
 }
+
+.chose_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
