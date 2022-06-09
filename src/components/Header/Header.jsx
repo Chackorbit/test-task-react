@@ -1,40 +1,29 @@
 import s from './Header.module.css';
-import { ReactComponent as Logo } from '../../svg/Group.svg';
-import { ReactComponent as MobMenu } from '../../svg/Menu.svg';
+import { ReactComponent as Logo } from '../../svg/Logo.svg';
+import BtnSignUp from 'components/BtnSignUp/BtnSignUp';
 
-const Header = ({ openMenu }) => {
+const Header = () => {
   return (
     <header className={s.header} id="header">
       <div className={s.header_logo}>
         <a href="#first_block" className={s.link_logo}>
           <Logo />
-          TESTTASK
         </a>
       </div>
+
       <nav>
         <ul className={s.ul_nav}>
           <li className={s.nav_item}>
-            <a href="#register">About me</a>
+            <a href="#users">
+              <BtnSignUp>Users</BtnSignUp>
+            </a>
           </li>
           <li className={s.nav_item}>
-            <a href="#register">Relationships</a>
-          </li>
-          <li className={s.nav_item}>
-            <a href="#register">Requirements</a>
-          </li>
-          <li className={s.nav_item}>
-            <a href="#register">Users</a>
-          </li>
-          <li className={s.nav_item}>
-            <a href="#register">Sign Up</a>
+            <a href="#register">
+              <BtnSignUp>Sign up</BtnSignUp>
+            </a>
           </li>
         </ul>
-
-        <div className={s.mob_nav}>
-          <button type="button" onClick={openMenu}>
-            <MobMenu />
-          </button>
-        </div>
       </nav>
     </header>
   );

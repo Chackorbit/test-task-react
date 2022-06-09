@@ -1,7 +1,7 @@
 import s from './UsersItem.module.css';
 
 export default function UsersItem({ allUsers }) {
-  return allUsers.map(user => {
+  return allUsers?.map(user => {
     const { id, photo, name, position, email, phone } = user;
 
     return (

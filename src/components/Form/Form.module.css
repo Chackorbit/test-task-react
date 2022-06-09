@@ -3,21 +3,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
   width: 904px;
-
-  padding: 175px 60px 180px;
-
-  background-color: #f8f8f8;
-  background-image: url('../../svg/Footprint-467x177.svg');
-  background-repeat: no-repeat;
-  background-position-y: bottom;
-  background-position-x: right;
+  margin-bottom: 100px;
 }
 
 .title {
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 
   font-family: 'Nunito';
   font-style: normal;
@@ -28,19 +19,6 @@
   color: rgba(0, 0, 0, 0.87);
 }
 
-.text {
-  margin-bottom: 32px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.27;
-
-  text-align: center;
-
-  color: rgba(0, 0, 0, 0.87);
-}
 
 .form {
   display: flex;
@@ -52,9 +30,19 @@
   text-align: left;
 }
 
-.inputName {
-  height: 54px;
+.label {
   margin-bottom: 50px;
+  text-align: start;
+
+  font-size: 12px;
+  line-height: 14px;
+  color: #7E7E7E;
+}
+
+.inputName {
+  width: 100%;
+  height: 54px;
+  /* margin-bottom: 50px; */
   padding-left: 16px;
 
   font-family: 'Nunito';
@@ -68,6 +56,7 @@
   box-sizing: border-box;
   border-radius: 4px;
 }
+
 .inputName:focus {
   border: 2px solid #00bdd3;
 }
@@ -103,16 +92,15 @@
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .container {
     width: 704px;
-    padding: 175px 32px 180px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .container {
     width: 328px;
-    padding: 145px 16px 150px;
     text-align: center;
   }
+
   .form {
     width: 328px;
   }
@@ -182,4 +170,9 @@
   align-items: center;
   text-align: center;
   margin-bottom: 50px;
+}
+
+.preview img {
+  width: 70px;
+  height: 70px;
 }

@@ -7,12 +7,14 @@ body {
     'Asap' sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 html,
 body,
 div,
@@ -102,6 +104,7 @@ video {
   vertical-align: baseline;
   text-decoration: none;
 }
+
 article,
 aside,
 details,
@@ -115,20 +118,25 @@ nav,
 section {
   display: block;
 }
+
 html {
   height: 100%;
 }
+
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -136,6 +144,7 @@ q:after {
   content: '';
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -149,7 +158,7 @@ table {
   margin-bottom: 50px;
 }
 
-/* .chose_img img {
+.chose_img img {
   width: 70px;
   height: 70px;
-} */
+}

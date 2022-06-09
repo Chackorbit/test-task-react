@@ -2,19 +2,16 @@ import s from './App.module.css';
 import { useState, useEffect } from 'react';
 import Header from './Header/Header';
 import FirstBlock from './FirstBlock/FirstBlock';
-import SecondBlock from './SecondBlock/SecondBlock';
 import UsersList from './UsersList/UsersList';
 import Form from './Form/Form';
-import Footer from './Footer/Footer';
-import MobileMenu from './Header/MobileMenu/MobileMenu';
+import axios from 'axios';
 
 export const App = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [page, setPage] = useState(1);
+  const [showBtnMore, setShowBtnMore] = useState(false);
+  const [addUser, setAddUser] = useState(false);
   const [positions, setPositions] = useState([]);
-  const [openMenu, setOpenMenu] = useState(false);
-
-  // eslint-disable-next-line no-unused-vars
 
   const fetchUsers = () => {
     const BASE_URL =
@@ -24,41 +21,45 @@ export const App = () => {
       count: 6,
     });
     const url = `${BASE_URL}?${meta}`;
-
+    if (addUser) {
+      setPage(1);
+      setAddUser(false);
+      setAllUsers([]);
+    }
     fetch(url)
       .then(function (response) {
         return response.json();
       })
       .then(function (data) {
         // console.log(data.users);
+        if (data.links.next_url === null) {
+          setShowBtnMore(true);
+        }
         if (data.success) {
           setAllUsers(state => {
-            if (state.length === 0) {
+            if (page === 1 || data.length === 0) {
               return data.users;
             }
-            if (state.length > 0) {
+            if (page > 1) {
               return [...state, ...data.users];
             }
           });
           // ответ об успешной обработке
-        } else {
-          // обработка ошибок сервера
         }
+      })
+      .catch(error => {
+        console.log(error);
       });
   };
 
-  const fetchPosition = () => {
-    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/positions')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        setPositions(data.positions); // ответ об успешном завершении процесса }) ```
-      });
+  const fetchPosition = async () => {
+    const { data } = await axios.get(
+      'https://frontend-test-assignment-api.abz.agency/api/v1/positions'
+    );
+    setPositions(data.positions);
   };
 
   const showMore = () => {
-    // setAllUsers(state => [...state, ...dataUsers]);
     setPage(state => state + 1);
   };
 
@@ -82,16 +83,6 @@ export const App = () => {
     });
   });
 
-  const onOpenMenu = e => {
-    setOpenMenu(state => {
-      if (state === true) {
-        return false;
-      } else if (state === false) {
-        return true;
-      }
-    });
-  };
-
   useEffect(() => {
     fetchPosition();
   }, []);
@@ -99,22 +90,22 @@ export const App = () => {
   useEffect(() => {
     fetchUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [page, addUser]);
 
   return (
     <div className={s.body}>
-      <Header openMenu={onOpenMenu} />
-      {openMenu && <MobileMenu onOpenMenu={onOpenMenu} />}
+      <Header />
 
       <FirstBlock />
 
-      <SecondBlock />
+      <UsersList
+        showBtnMore={showBtnMore}
+        showMore={showMore}
+        allUsers={allUsers}
+        addUser={addUser}
+      />
 
-      <UsersList showMore={showMore} allUsers={allUsers} />
-
-      <Form positions={positions} />
-
-      <Footer />
+      <Form positions={positions} setAddUser={setAddUser} />
     </div>
   );
 };

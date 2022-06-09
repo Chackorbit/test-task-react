@@ -1,47 +1,54 @@
 import s from './Form.module.css';
-import react from 'react';
+import { useEffect } from 'react';
 import BtnSignUp from 'components/BtnSignUp/BtnSignUp';
-// import { ReactComponent as backGroundSvg } from '../../svg/Footprint-467x177.svg';
+import axios from 'axios';
+import { useFormik } from 'formik';
 
-export default class Form extends react.Component {
-  state = {
-    name: '',
-    email: '',
-    phone: '',
-    position_id: 0,
+axios.defaults.baseURL =
+  'https://frontend-test-assignment-api.abz.agency/api/v1';
+
+export default function Form({ positions, setAddUser }) {
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      phone: '',
+      position_id: 0,
+      photo: '',
+    },
+
+    onSubmit: values => {
+      fetchToken();
+    },
+  });
+
+  const fetchToken = async () => {
+    try {
+      const { data } = await axios.get('/token');
+      if (data.success) {
+        registerUser(data.token);
+      }
+    } catch (error) {}
   };
 
-  appendFormData = () => {
-    const { name, email, phone, position_id } = this.state;
+  const appendFormData = () => {
+    const { name, email, phone, position_id, photo } = formik.values;
 
     var formData = new FormData();
-
-    var fileField = document.querySelector('input[type="file"]');
 
     formData.append('name', name);
     formData.set('email', email);
     formData.set('phone', phone);
     formData.set('position_id', position_id);
+    formData.append('photo', photo);
 
-    formData.append('photo', fileField.files[0]);
     return formData;
   };
 
-  fetchToken = async () => {
-    const tok = await fetch(
-      'https://frontend-test-assignment-api.abz.agency/api/v1/token'
-    );
-    const r = await tok.json();
-
-    if (r.success) {
-      this.registerUser(r.token);
-    }
-  };
-
-  registerUser = token => {
+  const registerUser = async token => {
     fetch(' https://frontend-test-assignment-api.abz.agency/api/v1/users', {
       method: 'POST',
-      body: this.appendFormData(),
+      body: appendFormData(),
       headers: { Token: token },
     })
       .then(function (response) {
@@ -49,10 +56,10 @@ export default class Form extends react.Component {
       })
       .then(function (data) {
         console.log(data);
+
         if (data.success) {
-          return this.resetForm();
-        } else {
-          // обработка ошибок сервера
+          setAddUser(state => !state);
+          return resetForm();
         }
       })
       .catch(function (error) {
@@ -60,28 +67,7 @@ export default class Form extends react.Component {
       });
   };
 
-  onChangeState = e => {
-    const { name, value } = e.currentTarget;
-
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleChange = e => {
-    const { id } = e.target;
-    this.setState({
-      position_id: id,
-    });
-  };
-
-  onSubmit = e => {
-    e.preventDefault();
-
-    this.fetchToken();
-  };
-
-  validFileType = file => {
+  const validFileType = file => {
     var fileTypes = ['image/jpeg', 'image/pjpeg', 'image/png'];
 
     for (var i = 0; i < fileTypes.length; i++) {
@@ -93,7 +79,7 @@ export default class Form extends react.Component {
     return false;
   };
 
-  updateImageDisplay = () => {
+  const updateImageDisplay = () => {
     var input = document.querySelector('#upload-photo');
     var preview = document.querySelector('.preview');
 
@@ -116,12 +102,9 @@ export default class Form extends react.Component {
         var listItem = document.createElement('li');
         // eslint-disable-next-line no-redeclare
         var para = document.createElement('p');
-        if (this.validFileType(curFiles[i])) {
+        if (validFileType(curFiles[i])) {
           para.textContent =
-            curFiles[i].name +
-            ' ' +
-            this.returnFileSize(curFiles[i].size) +
-            '.';
+            curFiles[i].name + ' ' + returnFileSize(curFiles[i].size) + '.';
           var image = document.createElement('img');
           image.src = window.URL.createObjectURL(curFiles[i]);
 
@@ -140,7 +123,7 @@ export default class Form extends react.Component {
     }
   };
 
-  returnFileSize = number => {
+  const returnFileSize = number => {
     if (number < 1024) {
       return number + 'bytes';
     } else if (number > 1024 && number < 1048576) {
@@ -150,123 +133,126 @@ export default class Form extends react.Component {
     }
   };
 
-  componentDidMount() {
-    // console.log('componentDidMount');
-    window.addEventListener('change', this.updateImageDisplay);
-  }
+  const uploadAvatar = event => {
+    formik.values.photo = event.currentTarget.files[0];
+  };
 
-  componentWillUnmount() {
-    // console.log('componentWillUnmount');
-    window.removeEventListener('change', this.updateImageDisplay);
-  }
-
-  resetForm = () => {
+  const resetForm = () => {
     const form = document.getElementById('form');
-
-    this.setState({
+    formik.resetForm({
       name: '',
       email: '',
       phone: '',
       position_id: 0,
+      photo: '',
     });
-
     form.reset();
   };
 
-  render() {
-    const { positions } = this.props;
+  useEffect(() => {
+    window.addEventListener('change', updateImageDisplay);
 
-    return (
-      <div className={s.container} id="register">
-        <h2 className={s.title}>Register to get a work</h2>
-        <p className={s.text}>
-          Your personal data is stored according to the Privacy Policys
-        </p>
+    return () => {
+      window.removeEventListener('change', updateImageDisplay);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-        {/* onSubmit={this.onSubmit} */}
-        <form className={s.form} onSubmit={this.onSubmit} id="form">
+  return (
+    <div className={s.container} id="register">
+      <h2 className={s.title}>Working with POST request</h2>
+
+      <form className={s.form} onSubmit={formik.handleSubmit} id="form">
+        <label className={s.label}>
           <input
             id="name"
             placeholder="Your name"
             className={s.inputName}
-            onChange={this.onChangeState}
-            value={this.state.name}
+            onChange={formik.handleChange}
+            value={formik.values.name}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             minLength={2}
             maxLength="60"
-            // required
+            required
           />
+        </label>
+
+        <label className={s.label}>
           <input
             placeholder="Email"
             className={s.inputName}
             type="email"
             id="email"
-            onChange={this.onChangeState}
-            value={this.state.email}
+            onChange={formik.handleChange}
+            value={formik.values.email}
             name="email"
             // pattern=""
             minLength={2}
             maxLength="100"
-            // required
+            required
           />
+        </label>
+
+        <label className={s.label}>
           <input
             placeholder="Phone"
             className={s.inputName}
-            onChange={this.onChangeState}
-            value={this.state.phone}
+            onChange={formik.handleChange}
+            value={formik.values.phone}
             type="tel"
             name="phone"
             id="phone"
             pattern="^[\+]{0,1}380([0-9]{9})$"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            // required
+            required
           />
-          <label htmlFor="upload-photo" className={s.input__file_button}>
-            <span className={s.input__file_icon_wrapper}>Upload</span>
-            <span className="input__file-button-text">Upload your photo</span>
-          </label>
-          <input
-            className={s.visually_hidden}
-            id="upload-photo"
-            name="photo"
-            type="file"
-            accept=".jpg, .jpeg"
-            // required
-          />
-          <div className="preview">
-            {/* <p>No files currently selected for upload</p> */}
-          </div>
+          +38 (XXX) XXX - XX - XX
+        </label>
 
-          <p>Select your position</p>
-          <div className={s.container_radio}>
-            {positions.map(position => {
-              return (
-                <label key={position.id}>
-                  <input
-                    className={s.radio}
-                    id={position.id}
-                    type="radio"
-                    name="position"
-                    value={position.name}
-                    onChange={this.handleChange}
-                  />
-                  {position.name}
-                </label>
-              );
-            })}
-          </div>
-          <div className={s.btn}>
-            <BtnSignUp type="submit">
-              {/* <input type="reset"></input> */}
-              Sign Up
-            </BtnSignUp>
-            \
-          </div>
-        </form>
-      </div>
-    );
-  }
+        <p>Select your position</p>
+        <div className={s.container_radio}>
+          {positions?.map(position => {
+            return (
+              <label key={position.id}>
+                <input
+                  className={s.radio}
+                  id={position.id}
+                  type="radio"
+                  name="position_id"
+                  value={position.id}
+                  onChange={formik.handleChange}
+                />
+                {position.name}
+              </label>
+            );
+          })}
+        </div>
+
+        <label htmlFor="upload-photo" className={s.input__file_button}>
+          <span className={s.input__file_icon_wrapper}>Upload</span>
+          <span className="input__file-button-text">Upload your photo</span>
+        </label>
+        <input
+          className={s.visually_hidden}
+          id="upload-photo"
+          name="photo"
+          type="file"
+          accept=".jpg, .jpeg"
+          onChange={uploadAvatar}
+          required
+        />
+        <div className="preview"></div>
+
+        <div className={s.btn}>
+          <BtnSignUp type="submit" isSubmitting={formik.isSubmitting}>
+            {formik.isSubmitting ? 'Loading...' : 'Sign Up'}
+          </BtnSignUp>
+          \
+        </div>
+      </form>
+    </div>
+  );
 }

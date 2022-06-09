@@ -1,103 +1,72 @@
 .section {
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   width: 1024px;
   height: 650px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 60px;
-
-  background: url('img/backgrond@1x-min.png'),
-    linear-gradient(0deg, #e0e0e0, #e0e0e0), url('img/backgrond@1x-min.png');
+  margin-bottom: 140px;
+  /* margin-top: 60px; */
+  background: url('img/background-1024.png'), linear-gradient(0deg, #e0e0e0, #e0e0e0), url('img/background-1024.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
+  text-align: center;
+  color: #FFFFFF;
 }
-.container {
-  width: 670px;
-  height: 280px;
 
-  margin-left: 60px;
-  margin-top: 185px;
-  margin-bottom: 185px;
+.container {
+  display: flex;
+  flex-direction: column;
+
+  width: 380px;
+  height: 323px;
 }
+
 .title {
   margin-bottom: 21px;
-
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 400;
   font-size: 40px;
   line-height: 1;
-
-  color: rgba(0, 0, 0, 0.87);
 }
+
 .text {
-  display: block;
-  width: 527px;
-  height: 97px;
-
   margin-bottom: 32px;
-
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.62;
-
-  color: rgba(0, 0, 0, 0.87);
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .section {
     width: 768px;
-    height: 500px;
-    background: url('img/background-tab-min.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+    /* height: 500px; */
+    background: url('img/background-768.png');
+    background-size: cover;
   }
-  .container {
-    width: 424px;
-    height: 339px;
 
-    margin-left: 32px;
-    margin-top: 81px;
-    margin-bottom: 80px;
-  }
-  .text {
-    width: 424px;
-    height: 156px;
-  }
 }
 
 @media screen and (max-width: 767px) {
   .section {
     width: 360px;
-    height: 469px;
-
-    background: url('img/backgraund-tel-min.png'),
-      linear-gradient(0deg, #edecea, #edecea);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: contain;
+    height: 500px;
+    background: url('img/background-360.png'), linear-gradient(0deg, #edecea, #edecea);
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    background-size: cover;
   }
+
   .container {
-    width: 240;
-    height: 367;
-
-    margin-left: 16px;
-    margin-top: 51px;
-    margin-bottom: 51px;
+    width: 328px;
+    height: 389px;
   }
 
-  .title {
-    width: 240px;
-  }
 
-  .text {
-    width: 240px;
-    height: 104px;
-    overflow: hidden;
-  }
 }
