@@ -4,5 +4,9 @@
   align-items: center;
   flex-direction: column;
 
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+
   background-color: #f8f8f8;
 }

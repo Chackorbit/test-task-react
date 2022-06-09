@@ -17,7 +17,6 @@ export default function FirstBlock() {
         <a href="#register">
           <BtnSignUp>Sign up</BtnSignUp>
         </a>
-        {/* <button className={s.button}>Sign up</button> */}
       </div>
     </section>
   );

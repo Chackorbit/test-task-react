@@ -1,5 +1,4 @@
 .header {
-
   display: flex;
   align-items: center;
 
@@ -13,7 +12,6 @@
 }
 
 .header_logo {
-  /* margin-left: 60px; */
   margin-right: auto;
 }
 
@@ -29,29 +27,15 @@
   gap: 10px;
 }
 
-.nav_item {
-  /* margin-right: 30px; */
-}
-
 .nav_item a {
   color: rgba(0, 0, 0, 0.87);
 }
-
-/* .nav_item:last-child {
-  margin-right: 60px;
-} */
-
-
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .header {
     width: 768px;
     padding: 0 32px;
   }
-
-
-
-
 }
 
 @media screen and (max-width: 767px) {
@@ -59,6 +43,4 @@
     width: 360px;
     padding: 0 16px;
   }
-
-
 }
