@@ -1,10 +1,13 @@
 import s from './App.module.css';
+import React, { Suspense } from 'react';
 import { useState, useEffect } from 'react';
-import Header from './Header/Header';
-import FirstBlock from './FirstBlock/FirstBlock';
-import UsersList from './UsersList/UsersList';
-import Form from './Form/Form';
+
 import axios from 'axios';
+
+const Header = React.lazy(() => import('./Header/Header'));
+const FirstBlock = React.lazy(() => import('./FirstBlock/FirstBlock'));
+const UsersList = React.lazy(() => import('./UsersList/UsersList'));
+const Form = React.lazy(() => import('./Form/Form'));
 
 export const App = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -94,18 +97,20 @@ export const App = () => {
 
   return (
     <div className={s.body}>
-      <Header />
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <Header />
 
-      <FirstBlock />
+        <FirstBlock />
 
-      <UsersList
-        showBtnMore={showBtnMore}
-        showMore={showMore}
-        allUsers={allUsers}
-        addUser={addUser}
-      />
+        <UsersList
+          showBtnMore={showBtnMore}
+          showMore={showMore}
+          allUsers={allUsers}
+          addUser={addUser}
+        />
 
-      <Form positions={positions} setAddUser={setAddUser} />
+        <Form positions={positions} setAddUser={setAddUser} />
+      </Suspense>
     </div>
   );
 };
