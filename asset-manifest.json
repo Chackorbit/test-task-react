@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/test-task-react/static/css/main.827b6562.css",
-    "main.js": "/test-task-react/static/js/main.a90b04b0.js",
+    "main.js": "/test-task-react/static/js/main.e3bf3b23.js",
     "static/css/601.31244a05.chunk.css": "/test-task-react/static/css/601.31244a05.chunk.css",
     "static/js/601.9b98ebdb.chunk.js": "/test-task-react/static/js/601.9b98ebdb.chunk.js",
     "static/css/763.c6a5e91b.chunk.css": "/test-task-react/static/css/763.c6a5e91b.chunk.css",
     "static/js/763.f29bf914.chunk.js": "/test-task-react/static/js/763.f29bf914.chunk.js",
     "static/css/218.08ff05b2.chunk.css": "/test-task-react/static/css/218.08ff05b2.chunk.css",
-    "static/js/218.72d580ae.chunk.js": "/test-task-react/static/js/218.72d580ae.chunk.js",
+    "static/js/218.41686f8e.chunk.js": "/test-task-react/static/js/218.41686f8e.chunk.js",
     "static/css/745.9a5c4775.chunk.css": "/test-task-react/static/css/745.9a5c4775.chunk.css",
     "static/js/745.4d6075f7.chunk.js": "/test-task-react/static/js/745.4d6075f7.chunk.js",
     "static/js/705.32d4f0f5.chunk.js": "/test-task-react/static/js/705.32d4f0f5.chunk.js",
@@ -17,19 +17,19 @@
     "static/media/Logo.svg": "/test-task-react/static/media/Logo.56bda82bd882001476c0cd3c0dd1e432.svg",
     "index.html": "/test-task-react/index.html",
     "main.827b6562.css.map": "/test-task-react/static/css/main.827b6562.css.map",
-    "main.a90b04b0.js.map": "/test-task-react/static/js/main.a90b04b0.js.map",
+    "main.e3bf3b23.js.map": "/test-task-react/static/js/main.e3bf3b23.js.map",
     "601.31244a05.chunk.css.map": "/test-task-react/static/css/601.31244a05.chunk.css.map",
     "601.9b98ebdb.chunk.js.map": "/test-task-react/static/js/601.9b98ebdb.chunk.js.map",
     "763.c6a5e91b.chunk.css.map": "/test-task-react/static/css/763.c6a5e91b.chunk.css.map",
     "763.f29bf914.chunk.js.map": "/test-task-react/static/js/763.f29bf914.chunk.js.map",
     "218.08ff05b2.chunk.css.map": "/test-task-react/static/css/218.08ff05b2.chunk.css.map",
-    "218.72d580ae.chunk.js.map": "/test-task-react/static/js/218.72d580ae.chunk.js.map",
+    "218.41686f8e.chunk.js.map": "/test-task-react/static/js/218.41686f8e.chunk.js.map",
     "745.9a5c4775.chunk.css.map": "/test-task-react/static/css/745.9a5c4775.chunk.css.map",
     "745.4d6075f7.chunk.js.map": "/test-task-react/static/js/745.4d6075f7.chunk.js.map",
     "705.32d4f0f5.chunk.js.map": "/test-task-react/static/js/705.32d4f0f5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.827b6562.css",
-    "static/js/main.a90b04b0.js"
+    "static/js/main.e3bf3b23.js"
   ]
 }
