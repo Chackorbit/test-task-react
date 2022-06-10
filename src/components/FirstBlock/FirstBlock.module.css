@@ -5,7 +5,7 @@
   width: 1024px;
   height: 650px;
   margin-bottom: 140px;
-  background: url('img/background-1024.webp'), linear-gradient(0deg, #e0e0e0, #e0e0e0), url('img/background-1024.webp');
+  background: url('img/background-1024.webp'), linear-gradient(0deg, #e0e0e0, #e0e0e0);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
