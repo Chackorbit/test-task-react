@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/test-task-react/static/css/main.3d1bedcb.css",
+    "main.css": "/test-task-react/static/css/main.5ffe6b4a.css",
     "main.js": "/test-task-react/static/js/main.6065f6dd.js",
     "static/media/background-1024.webp": "/test-task-react/static/media/background-1024.70f2ef650b9d7efcf90f.webp",
     "static/media/background-768.webp": "/test-task-react/static/media/background-768.f29512604793d7febdeb.webp",
     "static/media/background-360.webp": "/test-task-react/static/media/background-360.222aa9334a68e7ac57a3.webp",
     "static/media/Logo.svg": "/test-task-react/static/media/Logo.56bda82bd882001476c0cd3c0dd1e432.svg",
     "index.html": "/test-task-react/index.html",
-    "main.3d1bedcb.css.map": "/test-task-react/static/css/main.3d1bedcb.css.map",
+    "main.5ffe6b4a.css.map": "/test-task-react/static/css/main.5ffe6b4a.css.map",
     "main.6065f6dd.js.map": "/test-task-react/static/js/main.6065f6dd.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d1bedcb.css",
+    "static/css/main.5ffe6b4a.css",
     "static/js/main.6065f6dd.js"
   ]
 }
