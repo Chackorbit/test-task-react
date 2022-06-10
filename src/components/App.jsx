@@ -1,7 +1,6 @@
 import s from './App.module.css';
 import React, { Suspense } from 'react';
 import { useState, useEffect } from 'react';
-
 import axios from 'axios';
 
 const Header = React.lazy(() => import('./Header/Header'));
@@ -34,7 +33,6 @@ export const App = () => {
         return response.json();
       })
       .then(function (data) {
-        // console.log(data.users);
         if (data.links.next_url === null) {
           setShowBtnMore(true);
         }

@@ -1,6 +1,5 @@
 .section {
   width: 904px;
-
   margin-bottom: 140px;
   padding: 0 60px;
 }
@@ -22,7 +21,6 @@
 .text {
   font-size: 22px;
   line-height: 1.27;
-
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -30,7 +28,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 29px;
-
   margin-bottom: 50px;
 }
 
@@ -54,7 +51,6 @@
 @media screen and (max-width: 767px) {
   .section {
     width: 360px;
-
     padding: 0 16px;
 
     box-sizing: border-box;

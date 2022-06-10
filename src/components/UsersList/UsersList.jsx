@@ -2,12 +2,7 @@ import s from './UsersList.module.css';
 import UsersItem from './UsersItem/UsersItem';
 import BtnSignUp from 'components/BtnSignUp/BtnSignUp';
 
-export default function UsersList({
-  allUsers,
-  showMore,
-  showBtnMore,
-  addUser,
-}) {
+export default function UsersList({ allUsers, showMore, showBtnMore }) {
   return (
     <section className={s.section} id="users">
       <div className={s.container}>
